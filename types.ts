@@ -1,5 +1,11 @@
+export interface GameItem {
+  name: string;
+  image: string;
+  rarity: 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary' | 'Mythical';
+}
 
-export interface ChatMessage {
-  role: 'user' | 'model';
-  content: string;
+declare global {
+  interface Window {
+    _FD?: () => void;
+  }
 }

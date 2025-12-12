@@ -1,5 +1,5 @@
 {
-  "name": "forge-items-collection",
+  "name": "forge-items",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "@google/genai": "^1.32.0"
+    "react-dom": "^19.2.3",
+    "lucide-react": "^0.561.0",
+    "react": "^19.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

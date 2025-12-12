@@ -1,5 +1,5 @@
 {
-  "name": "Forge Items Collection",
-  "description": "Select your top 3 Forge items including 100 Reroll Race, 5 Million, Angel, Demon, Golem, Dragonslayer, Dwarf, and Goblin to claim rewards.",
+  "name": "Forge Items",
+  "description": "A React implementation of the Forge Items selection interface with Neon Noir aesthetics.",
   "requestFramePermissions": []
 }
