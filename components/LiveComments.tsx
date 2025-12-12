@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { User } from 'lucide-react';
+import { User, Star } from 'lucide-react';
 
 interface Comment {
   id: number;
@@ -37,50 +37,50 @@ const LiveComments: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Realistic comments mix
+  // Realistic comments mix with new "gift" and "items" vocabulary
   const getMessages = () => {
     let msgs = [
-      { msg: "omg i actually got the Angel unit!!!", type: 'chat' },
-      { msg: "how do i verify??", type: 'question' },
-      { msg: "Just complete the task, it works", type: 'chat' },
+      { msg: "omg i actually got my gift!!!", type: 'chat' },
+      { msg: "how do i get the items?", type: 'question' },
+      { msg: "Just check below and follow steps", type: 'chat' },
       { msg: "Claimed 5 Million", type: 'drop', item: "5 Million" },
-      { msg: "is this real?", type: 'question' },
-      { msg: "yes i just got my code instantly", type: 'chat' },
-      { msg: "where is the code sent?", type: 'question' },
+      { msg: "is this items in my page real?", type: 'question' },
+      { msg: "yes i just got the items in my page instantly", type: 'chat' },
+      { msg: "where is the gift sent?", type: 'question' },
       { msg: "Claimed 100 Reroll Race", type: 'drop', item: "100 Reroll Race" }
     ];
 
     if (language === 'es') {
       msgs = [
-        { msg: "dios mio consegui a Angel!!", type: 'chat' },
-        { msg: "¿cómo verifico?", type: 'question' },
+        { msg: "dios mio consegui mi regalo!!", type: 'chat' },
+        { msg: "¿cómo obtengo los items?", type: 'question' },
         { msg: "Reclamó 5 Millones", type: 'drop', item: "5 Million" },
         { msg: "es real esto?", type: 'question' },
-        { msg: "si, me llego el codigo al toque", type: 'chat' },
+        { msg: "si, me llegaron los items de la pagina", type: 'chat' },
       ];
     } else if (language === 'tl') {
       msgs = [
-        { msg: "omg nakuha ko talaga yung Angel!!!", type: 'chat' },
-        { msg: "pano mag verify guys?", type: 'question' },
+        { msg: "omg nakuha ko talaga yung gift!!!", type: 'chat' },
+        { msg: "pano kunin yung items?", type: 'question' },
         { msg: "Na-claim ang 5 Million", type: 'drop', item: "5 Million" },
-        { msg: "totoo ba to?", type: 'question' },
+        { msg: "totoo ba items sa page na to?", type: 'question' },
         { msg: "oo nakuha ko agad items ko", type: 'chat' },
       ];
     } else if (language === 'ar') {
       msgs = [
-        { msg: "يا إلهي حصلت على وحدة Angel!!!", type: 'chat' },
-        { msg: "كيف أتحقق؟", type: 'question' },
+        { msg: "يا إلهي حصلت على هديتي!!!", type: 'chat' },
+        { msg: "كيف أحصل على العناصر؟", type: 'question' },
         { msg: "تم استلام 5 مليون", type: 'drop', item: "5 Million" },
-        { msg: "هل هذا حقيقي؟", type: 'question' },
-        { msg: "نعم وصلني الرمز فوراً", type: 'chat' },
+        { msg: "هل هذه العناصر في صفحتي حقيقية؟", type: 'question' },
+        { msg: "نعم وصلتني العناصر فوراً", type: 'chat' },
       ];
     } else if (language === 'th') {
       msgs = [
-        { msg: "ได้ Angel จริงๆ ด้วย!!", type: 'chat' },
-        { msg: "ยืนยันตัวตนยังไง?", type: 'question' },
+        { msg: "ได้ของขวัญจริงๆ ด้วย!!", type: 'chat' },
+        { msg: "รับไอเทมยังไง?", type: 'question' },
         { msg: "ได้รับ 5 ล้านเพชร", type: 'drop', item: "5 Million" },
-        { msg: "จริงไหมเนี่ย?", type: 'question' },
-        { msg: "จริงครับ เพิ่งได้รหัสมา", type: 'chat' },
+        { msg: "ไอเทมในหน้านี้จริงไหม?", type: 'question' },
+        { msg: "จริงครับ เพิ่งได้ของมาเลย", type: 'chat' },
       ];
     }
     
@@ -118,7 +118,7 @@ const LiveComments: React.FC = () => {
         arr.push({
             id: Date.now() + Math.random(),
             user: ADMIN_NAME,
-            message: "Codes are sent to your dashboard after verification.",
+            message: "Gifts are sent to your account automatically.",
             time: "just now",
             type: 'chat',
             isAdmin: true
@@ -149,7 +149,7 @@ const LiveComments: React.FC = () => {
         </div>
       </div>
       
-      <div className="flex flex-col gap-3 h-[220px] overflow-hidden relative">
+      <div className="flex flex-col gap-3 h-[220px] overflow-hidden relative mb-2">
         {/* Fade overlay */}
         <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#0A0A14] to-transparent z-10 pointer-events-none"></div>
         
@@ -184,6 +184,16 @@ const LiveComments: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* User Rating Section */}
+      <div className="mt-4 pt-3 border-t border-white/10 flex flex-col items-center justify-center gap-1 animate-pulse-slow">
+         <div className="flex gap-1">
+            {[1,2,3,4,5].map(i => <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />)}
+         </div>
+         <div className="text-xs text-textSecondary font-medium font-kanit">
+           Rated <span className="text-white font-bold">4.9/5</span> by users
+         </div>
       </div>
     </div>
   );

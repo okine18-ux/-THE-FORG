@@ -75,7 +75,7 @@ const RewardsModal: React.FC<RewardsModalProps> = ({ isOpen, selectedItems, onCa
               type="text" 
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full max-w-[450px] bg-white border-4 border-black rounded-xl p-3 sm:p-[15px] text-[1.1rem] sm:text-[1.4rem] font-[900] text-center font-kanit shadow-[0_6px_0_rgba(0,0,0,0.3)] uppercase placeholder-[#bbb] focus:outline-none focus:border-secondary focus:-translate-y-[2px] focus:shadow-[0_8px_0_rgba(0,0,0,0.3)] transition-transform"
+              className="w-full max-w-[450px] bg-white border-4 border-black rounded-xl p-3 sm:p-[15px] text-[1.1rem] sm:text-[1.4rem] font-bold text-black text-shadow-none text-center font-kanit shadow-[0_6px_0_rgba(0,0,0,0.3)] uppercase placeholder-gray-400 focus:outline-none focus:border-secondary focus:-translate-y-[2px] focus:shadow-[0_8px_0_rgba(0,0,0,0.3)] transition-transform"
               placeholder={t.enterUsername}
               aria-label="Enter your username"
               autoFocus
