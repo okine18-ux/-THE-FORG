@@ -1,6 +1,6 @@
 import React from 'react';
 import { GameItem } from '../types';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, MousePointerClick } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface GameCardProps {
@@ -40,17 +40,17 @@ const GameCard: React.FC<GameCardProps> = ({ item, isSelected, onToggle }) => {
             }
         }}
         className={`
-          flex-fill relative text-center p-5 bg-bgSecondary rounded-[1.125rem] 
-          shadow-[0_0.5rem_1rem_0_rgba(0,0,0,0.4)] my-[15px] cursor-pointer 
+          flex-fill relative text-center p-3 sm:p-5 bg-bgSecondary rounded-[1.125rem] 
+          shadow-[0_0.5rem_1rem_0_rgba(0,0,0,0.4)] my-[10px] sm:my-[15px] cursor-pointer 
           transition-all duration-200 ease-in-out border-[3px] overflow-hidden group w-full
           ${isSelected 
-            ? 'border-success shadow-[0_0_25px_#2ed573] -translate-y-[5px]' 
-            : 'border-bgElevated hover:-translate-y-[3px]'
+            ? 'border-secondary shadow-[0_0_25px_rgba(247,37,133,0.5)] -translate-y-[5px]' 
+            : 'border-bgElevated hover:-translate-y-[3px] hover:border-white/20'
           }
         `}
       >
         <div className={`
-          absolute top-2 left-2 text-[0.7rem] font-[800] px-2 py-[3px] rounded-md 
+          absolute top-2 left-2 text-[0.6rem] sm:text-[0.7rem] font-[800] px-2 py-[3px] rounded-md 
           uppercase z-10 shadow-[0_2px_8px_rgba(0,0,0,0.6)] tracking-[0.5px] 
           pointer-events-none text-shadow-sm
           ${getRarityStyles(item.rarity)}
@@ -59,21 +59,28 @@ const GameCard: React.FC<GameCardProps> = ({ item, isSelected, onToggle }) => {
         </div>
 
         {isSelected && (
-          <CheckCircle2 className="absolute top-2.5 right-2.5 text-success w-6 h-6 fill-current" />
+          <CheckCircle2 className="absolute top-2.5 right-2.5 text-secondary w-6 h-6 fill-current animate-pop-in" />
         )}
 
-        <div className="relative mb-[10px]">
+        {/* Mobile Tap Hint Overlay if not selected */}
+        {!isSelected && (
+           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 sm:opacity-0">
+              <MousePointerClick className="text-white/50 w-8 h-8" />
+           </div>
+        )}
+
+        <div className="relative mb-[10px] mt-4">
           <img 
             src={item.image} 
             alt={item.name}
-            className="w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] object-cover rounded-[1.125rem] border-[3px] border-bgElevated mx-auto pointer-events-none"
+            className="w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] object-cover rounded-[1.125rem] border-[3px] border-bgElevated mx-auto pointer-events-none"
             onError={(e) => {
               e.currentTarget.src = 'https://placehold.co/130x130/1A1A2E/A0A3C2?text=ITEM';
             }}
           />
         </div>
         
-        <div className="text-textPrimary text-[1rem] sm:text-[1.2rem] mt-[10px] font-bold whitespace-nowrap overflow-hidden text-ellipsis">
+        <div className="text-textPrimary text-[0.9rem] sm:text-[1.2rem] mt-[5px] font-bold whitespace-nowrap overflow-hidden text-ellipsis px-1">
           {item.name}
         </div>
       </div>
